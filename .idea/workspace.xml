@@ -10,13 +10,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="77e26bfa-15b3-4e89-a3a9-9d19960c5009" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Simple-Web-Server.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/viktor/vano/simple/web/server/FileManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/viktor/vano/simple/web/server/GUI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/viktor/vano/simple/web/server/Server.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/viktor/vano/simple/web/server/web.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webServerPort.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/viktor/vano/simple/web/server/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/viktor/vano/simple/web/server/Server.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

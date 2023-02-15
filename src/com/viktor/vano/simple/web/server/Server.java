@@ -67,18 +67,20 @@ public class Server extends Thread{
                     e.printStackTrace();
                 }
 
-                PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
+                DataOutputStream out = new DataOutputStream(socket.getOutputStream());
                 if(request.contains("GET") || request.contains("get"))
                 {
                     String web = readOrCreateFile("web.html");
-                    String response = "HTTP/1.1 200 OK\r\nContent-Length: "
-                            + web.length()
-                            + "\r\nContent-Type: text/html\r\n\r\n"
-                            + web;
-                    out.write(response);
+
+                    out.writeBytes("HTTP/1.1 200 OK\n");
+                    out.writeBytes("Content-Length: " + web.length() + "\n");
+                    out.writeBytes("Content-Type: text/html\n");
+                    out.writeBytes("\n");
+                    out.writeBytes(web);
                 }
 
                 br.close();
+                out.flush();
                 out.close();
 
             }
