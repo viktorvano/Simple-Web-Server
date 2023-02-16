@@ -30,6 +30,10 @@ public class FileManager {
             {
                 data="9000";
                 writeToFile(filename, data);
+            }else if(data==null && filename.equals("webTimeout.txt"))
+            {
+                data="8000";
+                writeToFile(filename, data);
             }else if(data==null && filename.equals("web.html"))
             {
                 data="<html><head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><title>WEB Page</title></head><body><h1>EMPTY WEB PAGE</h1></body></html>";
