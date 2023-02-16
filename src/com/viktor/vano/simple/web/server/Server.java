@@ -55,7 +55,14 @@ public class Server extends Thread{
 
                 socket = server.accept();
                 System.out.println("Client accepted");
-                socket.setSoTimeout(60000);
+                try {
+                    String time = readOrCreateFile("webTimeout.txt");
+                    int timeout = Integer.parseInt(time);
+                    socket.setSoTimeout(timeout);
+                }catch (Exception e)
+                {
+                    socket.setSoTimeout(8000);
+                }
 
                 BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
