@@ -21,8 +21,23 @@ public class FileManager {
             }
 
             BufferedReader reader = new BufferedReader(new FileReader(filename));
-            String data;
-            data = reader.readLine();
+            String data = null;
+            while (true)
+            {
+                String line = null;
+                try {
+                    line = reader.readLine();
+                    if(line == null)
+                        break;
+                }catch (Exception e)
+                {
+                    break;
+                }
+                if(data == null)
+                    data = "";
+                if(line != null)
+                    data += line;
+            }
             reader.close();
             System.out.println("Reading successful.");
 

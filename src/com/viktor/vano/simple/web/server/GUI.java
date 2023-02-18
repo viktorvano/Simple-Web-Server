@@ -11,7 +11,7 @@ import javafx.stage.Stage;
 import static com.viktor.vano.simple.web.server.FileManager.*;
 
 public class GUI extends Application {
-    private final String version = "20230216";
+    private final String version = "20230218";
     private final int width = 400;
     private final int height = 120;
 
