@@ -4,6 +4,7 @@ import java.io.*;
 import java.net.*;
 
 import static com.viktor.vano.simple.web.server.FileManager.readOrCreateFile;
+import static com.viktor.vano.simple.web.server.FileManager.writeToFile;
 
 public class Server extends Thread{
     private int port;
@@ -54,7 +55,8 @@ public class Server extends Thread{
                 System.out.println("Waiting for a client ...");
 
                 socket = server.accept();
-                System.out.println("Client accepted");
+                GUI.visits++;
+                System.out.println("Client accepted: " + GUI.visits);
                 try {
                     String time = readOrCreateFile("webTimeout.txt");
                     int timeout = Integer.parseInt(time);
@@ -89,13 +91,12 @@ public class Server extends Thread{
                 br.close();
                 out.flush();
                 out.close();
-
             }
             catch(Exception e)
             {
                 System.out.println(e);
             }
-            System.out.println("Closing connection");
+            System.out.println("Closing connection: " + GUI.visits);
 
 
             try {
@@ -111,6 +112,8 @@ public class Server extends Thread{
             } catch (Exception e) {
                 e.printStackTrace();
             }
+
+            writeToFile("webVisits.txt", String.valueOf(GUI.visits));
         }
         System.out.println("Text server stopped successfully.");
     }
