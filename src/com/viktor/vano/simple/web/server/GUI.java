@@ -1,21 +1,28 @@
 package com.viktor.vano.simple.web.server;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import static com.viktor.vano.simple.web.server.FileManager.*;
 
 public class GUI extends Application {
-    private final String version = "20230218";
+    private final String version = "20230508";
     private final int width = 400;
     private final int height = 120;
 
     private Server server;
+    private Label labelVisits;
+    public static int visits = 0;
+    private Timeline timelineGUI;
 
     public static void main(String[] args) {
         launch(args);
@@ -36,6 +43,16 @@ public class GUI extends Application {
         server = new Server(port);
         server.start();
 
+        String visitsString = readOrCreateFile("webVisits.txt");
+        try{
+            visits = Integer.parseInt(visitsString);
+        }catch (Exception e)
+        {
+            e.printStackTrace();
+            visits = 0;
+            writeToFile("webVisits.txt", String.valueOf(visits));
+        }
+
         Pane pane = new Pane();
 
         Scene scene = new Scene(pane, width, height);
@@ -55,6 +72,12 @@ public class GUI extends Application {
         labelPort.setLayoutY(50);
         pane.getChildren().add(labelPort);
 
+        labelVisits = new Label("Visits: " + visits);
+        labelVisits.setFont(Font.font("Arial", 18));
+        labelVisits.setLayoutX(130);
+        labelVisits.setLayoutY(15);
+        pane.getChildren().add(labelVisits);
+
         try
         {
             Image icon = new Image(getClass().getResourceAsStream("web.jpg"));
@@ -72,6 +95,12 @@ public class GUI extends Application {
                 System.out.println("Icon failed to load...");
             }
         }
+
+        timelineGUI = new Timeline(new KeyFrame(Duration.millis(2500), event -> {
+            labelVisits.setText("Visits: " + visits);
+        }));
+        timelineGUI.setCycleCount(Timeline.INDEFINITE);
+        timelineGUI.play();
     }
 
     @Override

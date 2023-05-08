@@ -53,6 +53,10 @@ public class FileManager {
             {
                 data="<html><head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><title>WEB Page</title></head><body><h1>EMPTY WEB PAGE</h1></body></html>";
                 writeToFile(filename, data);
+            }else if(data==null && filename.equals("webVisits.txt"))
+            {
+                data="0";
+                writeToFile(filename, data);
             }
 
             return data;
